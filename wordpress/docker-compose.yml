@@ -1,0 +1,54 @@
+version: '3.7'
+
+networks:
+  wordpress_net:
+    driver: bridge
+
+volumes:
+  wordpress:
+  mysql:
+
+services:
+  wp-db:
+    image: mysql:8.0.30
+    networks:
+      - wordpress_net
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpwd
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    volumes:
+      - mysql:/var/lib/mysql 
+
+  wp-web:
+    image: wordpress
+    networks:
+      - wordpress_net
+    depends_on:
+      - wp-db
+    ports:
+      - 8080:80
+    environment:
+      WORDPRESS_DB_HOST: wp-db
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+
+  wp-phpmyadmin:
+    image: phpmyadmin
+    networks:
+      - wordpress_net
+    depends_on:
+      - wp-db
+    ports:
+      - 8181:80
+    environment:
+      PMA_HOST: wp-db
+      PMA_PORT: 3306
+      PMA_USER: wordpress
+      PMA_PASSWORD: wordpress
+    volumes:
+      - wordpress:/var/wwww/html

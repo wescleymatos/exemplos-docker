@@ -22,3 +22,22 @@ docker container run --name wp-web -e WORDPRESS_DB_HOST=wp-db -e WORDPRESS_DB_US
 ```sh 
 docker container run --name wp-phpmyadmin -e PMA_HOST=wp-db -e PMA_PORT=3306 -e PMA_USER=wordpress -e PMA_PASSWORD=wordpress --network=wordpress_net -p 8181:80 -d phpmyadmin
 ```
+
+### Rodar via docker compose
+
+```sh 
+docker-compose up -d
+```
+
+### Logs do docker compose
+
+```sh 
+docker-compose logs
+```
+
+### Lsta docker compose
+
+```sh 
+docker-compose ps
+```
+
