@@ -1,5 +1,6 @@
 # Estudo baseado no vídeo do canal - Fabrício Veronez DevOps Pro
  - [Como usar corretamente o Docker Compose](https://youtu.be/hue967OT4gw)
+ - [SQL Server Docker](https://balta.io/blog/sql-server-docker)
 
 ## Comandos Docker
 
@@ -53,3 +54,7 @@ docker-compose logs
 docker-compose ps
 ```
 
+### Acessar o bash do container
+```sh
+docker exec -it 35a6811e5677 "bash"
+```
