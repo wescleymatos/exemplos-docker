@@ -29,6 +29,12 @@ docker container run --name wp-phpmyadmin -e PMA_HOST=wp-db -e PMA_PORT=3306 -e 
 docker-compose up -d
 ```
 
+### Rodar via docker compose com a recriação dos containers
+
+```sh 
+docker-compose up -d --build
+```
+
 ### Rodar via docker compose com variáveis de ambiente
 
 ```sh 
